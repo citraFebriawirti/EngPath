@@ -1,4 +1,4 @@
-export const navItems = [
+export const navItems: NavItem[] = [
   {
     type: "link",
     href: "/",
@@ -6,28 +6,32 @@ export const navItems = [
   },
   {
     type: "link",
-    label: "Roadmap",
     href: "/text-generator",
+    label: "Roadmap",
   },
   {
     type: "link",
-    label: "Engineer Mindset",
     href: "/pricing",
+    label: "Engineer Mindset",
   },
   {
     type: "link",
-    label: "Open Source",
     href: "/contact",
+    label: "Open Source",
   },
-] satisfies NavItem[];
+];
 
-type NavItem = Record<string, string | unknown> &
-  (
-    | {
-        type: "link";
+type NavItem =
+  | {
+      type: "link";
+      href: string;
+      label: string;
+    }
+  | {
+      type: "dropdown";
+      label: string;
+      items: {
         href: string;
-      }
-    | {
-        type: "dropdown";
-      }
-  );
+        label: string;
+      }[];
+    };
