@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDown2Icon } from "@/icons/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

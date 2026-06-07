@@ -1,63 +1,25 @@
-import Image from "next/image";
-import React from "react";
+const stats = [
+  { value: "500+", label: "Active Learners" },
+  { value: "9", label: "Career Paths" },
+  { value: "200+", label: "Skill Nodes" },
+  { value: "100%", label: "Free & Open Source" },
+];
 
-export default function HeroLogos() {
+export default function StatsSection() {
   return (
-    <div className="wrapper">
-      <div className="max-w-[1016px] relative z-30 mx-auto pt-14 pb-16">
-        <p className="text-center text-white/50 text-lg font-medium">
-          Trusted by worlds largest companies including...
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-7 md:gap-14 mt-10">
-          <Image
-            src="/images/brands/br-1.svg"
-            className="opacity-50 transition hover:opacity-100"
-            alt=""
-            width={80}
-            height={32}
-          />
-          <Image
-            src="/images/brands/br-2.svg"
-            className="opacity-50 transition hover:opacity-100"
-            width={80}
-            height={32}
-            alt=""
-          />
-          <Image
-            src="/images/brands/br-3.svg"
-            className="opacity-50 transition hover:opacity-100"
-            width={80}
-            height={32}
-            alt=""
-          />
-          <Image
-            src="/images/brands/br-4.svg"
-            className="opacity-50 transition hover:opacity-100"
-            alt=""
-            width={80}
-            height={32}
-          />
-          <Image
-            src="/images/brands/br-5.svg"
-            className="opacity-50 transition hover:opacity-100"
-            width={80}
-            height={32}
-            alt=""
-          />
-          <Image
-            src="/images/brands/br-6.svg"
-            className="opacity-50 transition hover:opacity-100"
-            width={80}
-            height={32}
-            alt=""
-          />
-          <Image
-            src="/images/brands/br-7.svg"
-            className="opacity-50 transition hover:opacity-100"
-            width={80}
-            height={32}
-            alt=""
-          />
+    <div className="bg-gray-100 dark:bg-[#141715] border-y border-gray-300 dark:border-gray-800">
+      <div className="wrapper py-16">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 gap-y-8 sm:gap-6">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-[clamp(36px,5vw,52px)] font-semibold leading-none tracking-[-0.03em] tabular-nums text-gray-900 dark:text-gray-50">
+                {stat.value}
+              </p>
+              <p className="mt-[10px] text-[13.5px] text-gray-600 dark:text-gray-500">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

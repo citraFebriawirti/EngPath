@@ -1,9 +1,19 @@
 "use client";
 
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 const ThemeToggle = () => {
   const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return (
+      <div className="inline-flex items-center justify-center size-11 rounded-full bg-[#F2F4F7] dark:bg-white/5" />
+    );
+  }
 
   const isDark = resolvedTheme === 'dark';
 

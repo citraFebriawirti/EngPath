@@ -6,18 +6,23 @@ export const navItems: NavItem[] = [
   },
   {
     type: "link",
-    href: "/text-generator",
+    href: "/roadmap",
     label: "Roadmap",
   },
   {
     type: "link",
-    href: "/pricing",
+    href: "/mindset",
     label: "Engineer Mindset",
   },
   {
     type: "link",
-    href: "/contact",
+    href: "/opensource",
     label: "Open Source",
+  },
+  {
+    type: "link",
+    href: "/about",
+    label: "About",
   },
 ];
 

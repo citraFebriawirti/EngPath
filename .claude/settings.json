@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/arin.musi.os/Downloads/**)",
+      "Read(///wsl.localhost/Ubuntu/home/arinmusios/**)",
+      "Read(///wsl.localhost/Ubuntu/home/**)",
+      "Bash(done)",
+      "Bash(wc:*)",
+      "Bash(python3:*)",
+      "Bash(DEST=\"//wsl.localhost/Ubuntu/home/arinmusios/project-raincode/EngPath/src/app/globals.css\")",
+      "Bash(node --version:*)",
+      "Bash(node:*)"
+    ],
+    "additionalDirectories": [
+      "\\\\wsl.localhost\\Ubuntu\\home\\arinmusios\\project-raincode\\EngPath\\src\\app",
+      "\\\\wsl.localhost\\Ubuntu\\home\\arinmusios\\project-raincode\\EngPath\\src\\components\\layout\\header"
+    ]
+  }
+}
