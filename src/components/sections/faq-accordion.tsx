@@ -2,6 +2,8 @@
 
 import { MinusIcon, PlusIcon } from "@/icons/icons";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { FadeUp } from "@/components/ui/motion";
 
 // Define the FAQ item type
 interface FAQItem {
@@ -58,22 +60,18 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="border-y border-gray-300 bg-gray-100 dark:border-gray-800 dark:bg-[#141715] py-[86px]">
+    <section id="faq" className="border-y border-gray-100 dark:border-white/[0.06] bg-gray-50 dark:bg-[#101828] py-[88px]">
       <div className="wrapper">
-        <div className="mx-auto mb-11 flex max-w-[640px] flex-col items-center gap-[14px] text-center">
-          <p className="font-mono text-[12.5px] font-medium uppercase tracking-[0.06em] text-gray-500 dark:text-gray-500">
-            FAQ
-          </p>
-          <h2 className="text-[clamp(26px,3.4vw,40px)] font-semibold leading-[1.08] tracking-[-0.02em] text-balance text-gray-900 dark:text-gray-50">
-            Frequently asked questions
-          </h2>
-          <p className="max-w-[46ch] text-pretty text-[clamp(15px,1.6vw,17px)] leading-[1.6] text-gray-600 dark:text-gray-500">
+        <FadeUp className="mx-auto mb-11 flex max-w-[640px] flex-col items-center gap-4 text-center">
+          <p className="eyebrow">FAQ</p>
+          <h2 className="section-title">Frequently asked questions</h2>
+          <p className="section-sub mx-auto text-center">
             Everything you need to know about EngPath. Can&apos;t find what you&apos;re
             looking for? Open an issue on GitHub.
           </p>
-        </div>
-        <div className="mx-auto max-w-[680px]">
-          <div className="space-y-0">
+        </FadeUp>
+        <FadeUp delay={0.1} className="mx-auto max-w-[680px]">
+          <div>
             {faqItems.map((item) => (
               <FAQItem
                 key={item.id}
@@ -83,7 +81,7 @@ export default function FaqAccordion() {
               />
             ))}
           </div>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );
@@ -100,27 +98,39 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-gray-300 dark:border-gray-800">
+    <div className="border-b border-gray-200 dark:border-white/[0.07]">
       <button
         type="button"
         className="flex w-full items-center justify-between py-5 text-left"
         onClick={onToggle}
         aria-expanded={isActive}
       >
-        <span className="text-[16px] font-semibold text-gray-900 dark:text-gray-50">
+        <span className="text-[15.5px] font-semibold text-gray-900 dark:text-white">
           {item.question}
         </span>
-        <span className="ml-6 shrink-0 text-gray-500 dark:text-gray-500">
+        <span
+          className="ml-6 shrink-0 transition-colors duration-200"
+          style={{ color: isActive ? "#7A5AF8" : undefined }}
+        >
           {isActive ? <MinusIcon /> : <PlusIcon />}
         </span>
       </button>
-      {isActive && (
-        <div className="pb-5">
-          <p className="text-[14.5px] leading-[1.75] text-gray-600 dark:text-gray-500">
-            {item.answer}
-          </p>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {isActive && (
+          <motion.div
+            key="answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <p className="pb-5 text-[14px] leading-[1.75] text-gray-500 dark:text-gray-400">
+              {item.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

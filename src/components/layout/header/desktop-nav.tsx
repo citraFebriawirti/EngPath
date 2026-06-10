@@ -21,16 +21,24 @@ export default function DesktopNav() {
   }, [pathname]);
 
   return (
-    <nav className="hidden lg:flex lg:items-center bg-[#F9FAFB] dark:bg-white/3 rounded-full p-1 max-h-fit">
+    <nav
+      className="hidden lg:flex lg:items-center gap-0.5 rounded-full border border-gray-200/70 dark:border-white/[0.08] bg-gray-50/80 dark:bg-white/[0.04] px-1 py-1 backdrop-blur-sm"
+      aria-label="Main navigation"
+    >
       {navItems.map((item) => {
         if (item.type === "link") {
+          const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={cn("text-gray-500 dark:text-gray-400 text-sm px-4 py-1.5 rounded-full hover:text-primary-500 font-medium", {
-                "bg-white dark:bg-white/5 font-medium text-gray-800 dark:text-white/90 shadow-xs": pathname === item.href,
-              })}
+              className={cn(
+                "rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150",
+                isActive
+                  ? "bg-white dark:bg-white/[0.08] text-gray-900 dark:text-white shadow-theme-xs"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]"
+              )}
+              aria-current={isActive ? "page" : undefined}
             >
               {item.label}
             </Link>
@@ -38,11 +46,9 @@ export default function DesktopNav() {
         }
 
         if (item.type === "dropdown") {
-          const toggleThisDropdown = () => {
-            toggleActiveDropdown(item.label);
-          };
-
+          const toggleThisDropdown = () => { toggleActiveDropdown(item.label); };
           const isDropdownActive = activeDropdownKey === item.label;
+          const isActive = item.items?.some(({ href }) => pathname?.includes(href));
 
           return (
             <div key={item.label} className="relative">
@@ -50,41 +56,34 @@ export default function DesktopNav() {
                 onClick={toggleThisDropdown}
                 onMouseEnter={toggleThisDropdown}
                 onMouseLeave={toggleThisDropdown}
-                onKeyDown={(e) => {
-                  if (isDropdownActive && e.key === "Escape") {
-                    toggleThisDropdown();
-                  }
-                }}
-                className={cn("text-gray-500 dark:text-gray-400 hover:text-primary-500 group text-sm inline-flex gap-1 items-center px-4 py-1.5 font-medium rounded-full", {
-                  "bg-white dark:bg-white/5 font-medium text-gray-800 dark:text-white/90 shadow-xs": item.items?.some(({ href }) => pathname?.includes(href)),
-                })}
+                onKeyDown={(e) => { if (isDropdownActive && e.key === "Escape") toggleThisDropdown(); }}
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-150",
+                  isActive
+                    ? "bg-white dark:bg-white/[0.08] text-gray-900 dark:text-white shadow-theme-xs"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]"
+                )}
               >
                 <span>{item.label}</span>
-                <ChevronDown2Icon
-                  className={cn("size-4 transition-transform duration-200", {
-                    "rotate-180": isDropdownActive,
-                  })}
-                />
+                <ChevronDown2Icon className={cn("h-3.5 w-3.5 transition-transform duration-200", { "rotate-180": isDropdownActive })} />
               </button>
 
               {isDropdownActive && (
                 <div
                   onMouseEnter={toggleThisDropdown}
                   onMouseLeave={toggleThisDropdown}
-                  onKeyDown={(e) => {
-                    if (e.key === "Escape") {
-                      toggleThisDropdown();
-                    }
-                  }}
-                  className="absolute right-0 w-[266px] bg-white dark:bg-dark-secondary dark:border-gray-800 rounded-2xl shadow-theme-lg border border-gray-100 p-3 z-50"
+                  onKeyDown={(e) => { if (e.key === "Escape") toggleThisDropdown(); }}
+                  className="absolute right-0 z-50 mt-1.5 w-[220px] rounded-2xl border border-gray-100 dark:border-white/[0.08] bg-white dark:bg-[#171F2E] p-1.5 shadow-theme-lg"
                 >
-                  <div className="space-y-1">
-                    {item.items?.map((subItem) => (
-                      <Link key={subItem.href} href={subItem.href} className="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5">
-                        {subItem.label}
-                      </Link>
-                    ))}
-                  </div>
+                  {item.items?.map((subItem) => (
+                    <Link
+                      key={subItem.href}
+                      href={subItem.href}
+                      className="flex items-center rounded-xl px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.05] transition"
+                    >
+                      {subItem.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>

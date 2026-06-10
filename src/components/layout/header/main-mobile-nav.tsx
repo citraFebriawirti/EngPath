@@ -21,95 +21,81 @@ export default function MainMobileNav({ isOpen }: MobileMenuProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="lg:hidden h-screen absolute top-full bg-white dark:bg-dark-primary w-full border-b border-gray-200 dark:border-gray-800">
-      <div className="flex flex-col justify-between">
-        <div className="flex-1 overflow-y-auto">
-          <div className="pt-2 pb-3 space-y-1 px-4 sm:px-6">
-            {navItems.map((item) => {
-              if (item.type === 'link') {
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      'block px-3 py-2 rounded-md text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
-                      {
-                        'text-gray-800 dark:text-white': pathname === item.href,
-                      }
-                    )}
+    <div className="absolute top-full left-0 right-0 z-40 border-b border-white/[0.07] bg-[#0F172A]/95 backdrop-blur-xl lg:hidden">
+      <div className="wrapper py-4">
+        <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+          {navItems.map((item) => {
+            if (item.type === 'link') {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'flex items-center rounded-xl px-4 py-3 text-sm font-medium transition',
+                    isActive
+                      ? 'bg-white/[0.07] text-white'
+                      : 'text-gray-400 hover:bg-white/[0.05] hover:text-white'
+                  )}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            if (item.type === 'dropdown') {
+              return (
+                <div key={item.label}>
+                  <button
+                    onClick={() => toggleDropdown(item.label)}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-gray-400 hover:bg-white/[0.05] hover:text-white transition"
                   >
-                    {item.label}
-                  </Link>
-                );
-              }
+                    <span>{item.label}</span>
+                    <span className={cn('h-4 w-4 transition-transform duration-200', activeDropdown === item.label && 'rotate-180')}>
+                      <ChevronDownIcon />
+                    </span>
+                  </button>
 
-              if (item.type === 'dropdown') {
-                return (
-                  <div key={item.label}>
-                    <button
-                      onClick={() => toggleDropdown(item.label)}
-                      className={cn(
-                        'flex justify-between items-center w-full px-3 py-2 rounded-md text-sm font-medium' +
-                          ' text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
-                        {
-                          'text-gray-700 dark:text-gray-200': item.items.some(
-                            (subItem) => pathname.includes(subItem.href)
-                          ),
-                        }
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      <span
-                        className={cn(
-                          'size-4 transition-transform duration-200',
-                          activeDropdown === item.label && 'rotate-180'
-                        )}
-                      >
-                        <ChevronDownIcon />
-                      </span>
-                    </button>
+                  {activeDropdown === item.label && (
+                    <div className="mt-1 ml-4 flex flex-col gap-1 border-l border-white/[0.08] pl-4">
+                      {item.items.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          href={subItem.href}
+                          className={cn(
+                            'rounded-lg px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition',
+                            pathname.includes(subItem.href) && 'text-white'
+                          )}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+          })}
+        </nav>
 
-                    {activeDropdown === item.label && (
-                      <div className="mt-2 space-y-1 pl-4">
-                        {item.items.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className={cn(
-                              'flex items-center px-3 py-2 gap-1.5 rounded-md text-sm font-medium text-gray-500' +
-                                ' dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
-                              {
-                                'px-2': 'icon' in subItem,
-                                'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200':
-                                  pathname.includes(subItem.href),
-                              }
-                            )}
-                          >
-                            <span>{subItem.label}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-            })}
-          </div>
-        </div>
-
-        <div className="flex flex-col pt-2 pb-3 space-y-3 px-8">
-          <Link
-            href="/signin"
-            className="text-sm block w-full border h-11 border-gray-200 px-5 py-3 rounded-full text-center font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
+        <div className="mt-4 flex flex-col gap-2.5 border-t border-white/[0.07] pt-4">
+          <a
+            href="https://github.com/engpath"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-full border border-white/[0.10] text-sm font-medium text-gray-300 transition hover:bg-white/[0.05] hover:text-white"
           >
-            Sign In
-          </Link>
-
+            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            View on GitHub
+          </a>
           <Link
-            href="/signup"
-            className="flex items-center px-5 py-3 gradient-btn  justify-center text-sm text-white rounded-full button-bg h-11"
+            href="/roadmap"
+            className="flex h-11 w-full items-center justify-center rounded-full bg-[#7A5AF8] text-sm font-semibold text-white transition hover:bg-[#6941C6]"
           >
-            Get Started Free
+            Explore Roadmaps
           </Link>
         </div>
       </div>

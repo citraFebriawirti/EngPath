@@ -6,7 +6,6 @@ import DesktopNav from "./desktop-nav";
 import MainMobileNav from "./main-mobile-nav";
 import ThemeToggle from "./theme-toggle";
 import { usePathname } from "next/navigation";
-
 import { Route } from "lucide-react";
 
 export default function Header() {
@@ -18,51 +17,61 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="bg-white dark:bg-dark-primary border-b dark:border-gray-800 border-gray-100 sticky top-0 z-50 py-2 lg:py-4">
-      <div className="px-4 sm:px-6 lg:px-7">
-        <div className="grid grid-cols-2 items-center lg:grid-cols-[1fr_auto_1fr]">
+    <header className="sticky top-0 z-50 border-b border-gray-200/60 dark:border-white/[0.07] bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-xl">
+      <div className="wrapper">
+        <div className="grid grid-cols-2 items-center py-3 lg:grid-cols-[1fr_auto_1fr]">
+          {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-md">
-                <Route className="w-5 h-5" />
+            <Link href="/" className="flex items-center gap-2.5 group" aria-label="EngPath home">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#7A5AF8] text-white shadow-sm transition group-hover:opacity-90">
+                <Route className="h-4.5 w-4.5" />
               </div>
-
               <div className="flex flex-col leading-none">
-                <span className="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">EngPath</span>
-                <span className="text-[11px] text-gray-600 dark:text-gray-500">Engineer Career Roadmap</span>
+                <span className="text-[17px] font-bold tracking-tight text-gray-900 dark:text-white">
+                  EngPath
+                </span>
+                <span className="hidden text-[10.5px] font-medium text-gray-400 dark:text-gray-500 sm:block">
+                  Engineer Career Roadmap
+                </span>
               </div>
-
-              <span className="hidden sm:inline-block px-2 py-1 rounded-lg rounded-bl-none bg-primary-500/90 text-white text-[10px] font-semibold">Beta</span>
             </Link>
           </div>
 
+          {/* Desktop nav */}
           <DesktopNav />
 
-          <div className="flex items-center gap-4 justify-self-end">
+          {/* Right actions */}
+          <div className="flex items-center gap-2 justify-self-end">
             <ThemeToggle />
 
+            {/* Mobile menu button */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
               type="button"
-              className="order-last shrink-0 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 lg:hidden"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/[0.07] transition lg:hidden"
             >
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            <Link href="/roadmap" className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500">
-              Explore Roadmaps
+            <Link
+              href="/roadmap"
+              className="hidden text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition lg:block"
+            >
+              Roadmaps
             </Link>
 
             <a
               href="https://github.com/engpath"
               target="_blank"
               rel="noopener noreferrer"
-              className="lg:inline-flex items-center gap-2 px-5 py-2.5 gradient-btn hidden text-sm text-white rounded-full h-10"
+              className="hidden h-9 items-center gap-1.5 rounded-full bg-[#7A5AF8] px-4 text-sm font-medium text-white shadow-sm transition hover:bg-[#6941C6] lg:inline-flex"
             >
-              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
               </svg>
               GitHub

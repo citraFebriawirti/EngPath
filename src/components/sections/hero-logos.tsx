@@ -1,26 +1,33 @@
+"use client";
+
+import { StaggerContainer, StaggerItem } from "@/components/ui/motion";
+
 const stats = [
-  { value: "500+", label: "Active Learners" },
-  { value: "9", label: "Career Paths" },
-  { value: "200+", label: "Skill Nodes" },
-  { value: "100%", label: "Free & Open Source" },
+  { value: "500+", label: "Active Learners", color: "#7A5AF8" },
+  { value: "9", label: "Career Paths", color: "#7A5AF8" },
+  { value: "200+", label: "Skill Nodes", color: "#7A5AF8" },
+  { value: "100%", label: "Free & Open Source", color: "#7A5AF8" },
 ];
 
 export default function StatsSection() {
   return (
-    <div className="bg-gray-100 dark:bg-[#141715] border-y border-gray-300 dark:border-gray-800">
-      <div className="wrapper py-16">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 gap-y-8 sm:gap-6">
+    <div className="border-y border-gray-100 dark:border-white/[0.06] bg-gray-50 dark:bg-[#101828]">
+      <div className="wrapper py-14">
+        <StaggerContainer className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-[clamp(36px,5vw,52px)] font-semibold leading-none tracking-[-0.03em] tabular-nums text-gray-900 dark:text-gray-50">
+            <StaggerItem key={stat.label} className="flex flex-col items-center gap-2 text-center">
+              <p
+                className="text-[clamp(36px,5vw,52px)] font-bold leading-none tracking-[-0.035em] tabular-nums"
+                style={{ color: stat.color }}
+              >
                 {stat.value}
               </p>
-              <p className="mt-[10px] text-[13.5px] text-gray-600 dark:text-gray-500">
+              <p className="text-[13px] font-medium text-gray-500 dark:text-gray-500">
                 {stat.label}
               </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </div>
   );
