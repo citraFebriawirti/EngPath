@@ -82,7 +82,7 @@ export default function HeroSection() {
           className="mt-6 max-w-[18ch] text-balance text-[clamp(38px,6vw,68px)] font-bold leading-[1.05] tracking-[-0.035em] text-gray-900 dark:text-white"
         >
           Not just{" "}
-          <span className="relative text-gray-300 dark:text-gray-700">
+          <span className="relative text-gray-800 dark:text-gray-700">
             learning to code
             <span className="absolute left-[-2%] right-[-2%] top-[53%] h-[2.5px] -rotate-[2.5deg] rounded-full bg-gray-300 dark:bg-gray-700" />
           </span>

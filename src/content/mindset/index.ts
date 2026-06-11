@@ -3,6 +3,7 @@
    ─────────────────────────────────────────────────────────────────────────── */
 
 import { firstPrinciplesArticle } from "./first-principles";
+import { systemsThinkingArticle } from "./systems-thinking";
 
 /* ── Block types ─────────────────────────────────────────────────────────── */
 
@@ -49,7 +50,7 @@ export interface MindsetArticleContent {
 
 /* ── Article registry ────────────────────────────────────────────────────── */
 
-const articles: MindsetArticleContent[] = [firstPrinciplesArticle];
+const articles: MindsetArticleContent[] = [firstPrinciplesArticle, systemsThinkingArticle];
 
 /* ── Helpers ─────────────────────────────────────────────────────────────── */
 

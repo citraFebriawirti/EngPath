@@ -1,4 +1,6 @@
-export const firstPrinciplesArticle = {
+import type { MindsetArticleContent } from "../index";
+
+export const firstPrinciplesArticle: MindsetArticleContent = {
   slug: "first-principles",
   title: "First-Principles Thinking for Engineers",
   excerpt:

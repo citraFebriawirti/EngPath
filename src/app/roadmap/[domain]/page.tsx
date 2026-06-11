@@ -1,24 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  Code2,
-  Layers,
-  Server,
-  Smartphone,
-  Shield,
-  BarChart2,
-  Bug,
-  Database,
-  Briefcase,
-  BookOpen,
-  CheckCircle2,
-} from "lucide-react";
-import type { ComponentType } from "react";
+import { ArrowLeft, BookOpen, CheckCircle2, Code2 } from "lucide-react";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer";
 import SkillTree from "@/components/roadmap/skill-tree";
+import { iconMap } from "@/components/roadmap/icon-map";
 import {
   getDomain,
   getAllDomainSlugs,
@@ -27,20 +14,6 @@ import {
   type Level,
 } from "@/content/roadmap";
 import { FadeUp } from "@/components/ui/motion";
-
-/* ─────────────────────────── icon map ────────────────────────────────────── */
-
-const iconMap: Record<string, ComponentType<{ className?: string }>> = {
-  backend: Code2,
-  frontend: Layers,
-  devops: Server,
-  mobile: Smartphone,
-  security: Shield,
-  data: BarChart2,
-  qa: Bug,
-  dba: Database,
-  business: Briefcase,
-};
 
 /* ─────────────────────────── static params ───────────────────────────────── */
 

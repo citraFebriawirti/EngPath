@@ -1,102 +1,22 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Code2,
-  Layers,
-  Server,
-  Smartphone,
-  Shield,
-  BarChart2,
-  Bug,
-  Database,
-  Briefcase,
-} from "lucide-react";
-import type { ComponentType } from "react";
+import { ArrowRight } from "lucide-react";
+export { metadata } from "./data";
+import { heroStats } from "./data";
+import { roadmapDomains } from "@/content/roadmap";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer";
-import { roadmapDomains, type RoadmapDomain } from "@/content/roadmap";
+import DomainCard from "@/components/roadmap/domain-card";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
-export const metadata: Metadata = {
-  title: "Roadmaps",
-  description:
-    "9 structured career paths for software engineers: Backend, Frontend, DevOps, Mobile, Security, Data Engineering, QA, DBA, and Business & Tech.",
-};
+/* ── Derived data (computed once at module level) ───────────────────────── */
 
-const iconMap: Record<string, ComponentType<{ className?: string }>> = {
-  backend: Code2,
-  frontend: Layers,
-  devops: Server,
-  mobile: Smartphone,
-  security: Shield,
-  data: BarChart2,
-  qa: Bug,
-  dba: Database,
-  business: Briefcase,
-};
+const corePaths = roadmapDomains.filter((d) => d.flag === "Core");
+const specializations = roadmapDomains.filter((d) => d.flag === "Specialization");
+const domainPaths = roadmapDomains.filter((d) => d.flag === "Domain");
 
-function DomainCard({ domain }: { domain: RoadmapDomain }) {
-  const Icon = iconMap[domain.slug];
-  return (
-    <Link
-      href={`/roadmap/${domain.slug}`}
-      className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.07] bg-white dark:bg-[#171F2E] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 dark:hover:border-white/[0.14] hover:shadow-theme-md"
-    >
-      {/* Left accent bar */}
-      <span
-        className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-80"
-        style={{ background: domain.color }}
-      />
-
-      {/* Top row: icon + flag */}
-      <div className="flex items-center justify-between">
-        <div
-          className="flex h-10 w-10 items-center justify-center rounded-xl"
-          style={{ background: domain.bg, color: domain.color }}
-        >
-          {Icon && <Icon className="h-5 w-5" />}
-        </div>
-        <span
-          className="rounded-full px-2.5 py-0.5 font-mono text-[10.5px] font-semibold"
-          style={{ background: domain.bg, color: domain.color }}
-        >
-          {domain.flag}
-        </span>
-      </div>
-
-      {/* Title */}
-      <p className="text-[17px] font-semibold tracking-[-0.01em] text-gray-900 dark:text-white">
-        {domain.label}
-      </p>
-
-      {/* Description */}
-      <p className="flex-1 text-[13.5px] leading-[1.6] text-gray-500 dark:text-gray-400">
-        {domain.shortDesc}
-      </p>
-
-      {/* Meta */}
-      <div className="flex gap-3 font-mono text-[12px] text-gray-400 dark:text-gray-600">
-        <span>{domain.meta.nodes} nodes</span>
-        <span>~{domain.meta.hours}h</span>
-      </div>
-
-      {/* CTA */}
-      <div
-        className="mt-0.5 flex items-center gap-1.5 text-[13px] font-semibold"
-        style={{ color: domain.color }}
-      >
-        Start path
-        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-      </div>
-    </Link>
-  );
-}
+/* ── Page ───────────────────────────────────────────────────────────────── */
 
 export default function RoadmapPage() {
-  const corePaths = roadmapDomains.filter((d) => d.flag === "Core");
-  const specializations = roadmapDomains.filter((d) => d.flag === "Specialization");
-  const domainPaths = roadmapDomains.filter((d) => d.flag === "Domain");
 
   return (
     <>
@@ -129,11 +49,7 @@ export default function RoadmapPage() {
               </p>
 
               <div className="flex flex-wrap gap-2 font-mono text-[13px]">
-                {[
-                  { dot: "#7A5AF8", text: "9 career paths" },
-                  { dot: "#3BB58F", text: "200+ skill nodes" },
-                  { dot: "#A688FC", text: "Open source · free" },
-                ].map(({ dot, text }) => (
+                {heroStats.map(({ dot, text }) => (
                   <span
                     key={text}
                     className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-white/[0.08] bg-gray-50 dark:bg-white/[0.04] px-3 py-[5px] text-gray-500 dark:text-gray-400"

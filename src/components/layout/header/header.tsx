@@ -7,6 +7,7 @@ import MainMobileNav from "./main-mobile-nav";
 import ThemeToggle from "./theme-toggle";
 import { usePathname } from "next/navigation";
 import { Route } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,7 +61,12 @@ export default function Header() {
 
             <Link
               href="/roadmap"
-              className="hidden text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition lg:block"
+              className={cn(
+                "hidden text-sm font-medium transition lg:block",
+                pathname === "/roadmap" || pathname.startsWith("/roadmap/")
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              )}
             >
               Roadmaps
             </Link>

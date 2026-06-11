@@ -26,7 +26,10 @@ export default function MainMobileNav({ isOpen }: MobileMenuProps) {
         <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
           {navItems.map((item) => {
             if (item.type === 'link') {
-              const isActive = pathname === item.href;
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(item.href + "/");
               return (
                 <Link
                   key={item.href}
