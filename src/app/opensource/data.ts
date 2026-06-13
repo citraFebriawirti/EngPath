@@ -19,7 +19,10 @@ export interface OsProject {
   langColor: string;
   difficulty: "Beginner" | "Intermediate" | "Advanced";
   category: string;
-  href: string;
+  /** Internal detail page (core EngPath projects). */
+  href?: string;
+  /** External GitHub URL. When set, the card links directly to GitHub. */
+  githubUrl?: string;
   tags?: string[];
 }
 
@@ -35,76 +38,7 @@ export const difficultyConfig: Record<
 };
 
 export const projects: OsProject[] = [
-  {
-    name: "engpath-roadmap",
-    fullName: "engpath/engpath-roadmap",
-    description:
-      "The core roadmap data and interactive visualization engine powering all 9 career paths. Written in TypeScript with a JSON schema for skill node definitions.",
-    stars: 320,
-    forks: 48,
-    lang: "TypeScript",
-    langColor: "#3178c6",
-    difficulty: "Intermediate",
-    category: "Core",
-    href: "/opensource/engpath-roadmap",
-    tags: ["roadmap", "data", "visualization"],
-  },
-  {
-    name: "engpath-mindset",
-    fullName: "engpath/engpath-mindset",
-    description:
-      "Open collection of engineer mindset articles. Contribute your own mental models, case studies, and thinking frameworks in Markdown.",
-    stars: 185,
-    forks: 31,
-    lang: "Markdown",
-    langColor: "#083fa1",
-    difficulty: "Beginner",
-    category: "Content",
-    href: "/opensource/engpath-mindset",
-    tags: ["content", "writing", "mindset"],
-  },
-  {
-    name: "engpath-ui",
-    fullName: "engpath/engpath-ui",
-    description:
-      "Shared component library built with Next.js and Tailwind CSS. Used across all EngPath tools. Includes Storybook documentation.",
-    stars: 94,
-    forks: 17,
-    lang: "TypeScript",
-    langColor: "#3178c6",
-    difficulty: "Intermediate",
-    category: "Core",
-    href: "/opensource/engpath-ui",
-    tags: ["components", "ui", "tailwind"],
-  },
-  {
-    name: "engpath-cli",
-    fullName: "engpath/engpath-cli",
-    description:
-      "Command-line tool to browse roadmaps, track progress, and generate personalized study plans locally.",
-    stars: 67,
-    forks: 12,
-    lang: "Go",
-    langColor: "#00add8",
-    difficulty: "Advanced",
-    category: "Tooling",
-    href: "/opensource/engpath-cli",
-    tags: ["cli", "go", "tooling"],
-  },
-  {
-    name: "skill-node-schema",
-    fullName: "engpath/skill-node-schema",
-    description:
-      "JSON schema specification and validator for defining skill nodes, prerequisites, and learning path connections.",
-    stars: 52,
-    forks: 9,
-    lang: "JSON",
-    langColor: "#292929",
-    difficulty: "Beginner",
-    category: "Tooling",
-    href: "/opensource/skill-node-schema",
-    tags: ["schema", "validation", "spec"],
-  },
+  /* ── Core EngPath Projects ────────────────────────────────────────────── */
   {
     name: "engpath-api",
     fullName: "engpath/engpath-api",
@@ -119,47 +53,165 @@ export const projects: OsProject[] = [
     href: "/opensource/engpath-api",
     tags: ["api", "rest", "openapi"],
   },
+
+  /* ── Beginner: Next.js ────────────────────────────────────────────────── */
   {
-    name: "engpath-translations",
-    fullName: "engpath/engpath-translations",
+    name: "engpath-profile-card",
+    fullName: "engpath/engpath-profile-card",
     description:
-      "Translations for EngPath roadmap content and UI strings. Currently supports 8 languages. New languages welcome.",
-    stars: 38,
-    forks: 22,
-    lang: "JSON",
-    langColor: "#292929",
+      "A shareable developer card that displays your roadmap progress badges. Static export, no backend required — a clean first Next.js + Tailwind project.",
+    stars: 0,
+    forks: 0,
+    lang: "TypeScript",
+    langColor: "#3178c6",
     difficulty: "Beginner",
-    category: "Content",
-    href: "/opensource/engpath-translations",
-    tags: ["i18n", "translations", "community"],
+    category: "Next.js",
+    // githubUrl: "https://github.com/engpath/engpath-profile-card",
+    tags: ["nextjs", "tailwind", "profile"],
   },
+
+  /* ── Beginner: FastAPI ────────────────────────────────────────────────── */
   {
-    name: "engpath-discord-bot",
-    fullName: "engpath/engpath-discord-bot",
+    name: "roadmap-data-api",
+    fullName: "engpath/roadmap-data-api",
     description:
-      "Discord bot that brings EngPath roadmaps and mindset articles into your community server with slash commands.",
-    stars: 29,
-    forks: 5,
+      "A read-only FastAPI server that loads the EngPath roadmap JSON and exposes it as typed Pydantic endpoints. Auto-generates Swagger docs. No database needed.",
+    stars: 0,
+    forks: 0,
+    lang: "Python",
+    langColor: "#3572A5",
+    difficulty: "Beginner",
+    category: "FastAPI",
+    // githubUrl: "https://github.com/engpath/roadmap-data-api",
+    tags: ["fastapi", "python", "pydantic"],
+  },
+
+  /* ── Beginner: Laravel ────────────────────────────────────────────────── */
+  {
+    name: "learning-link-vault",
+    fullName: "engpath/learning-link-vault",
+    description:
+      "A simple Laravel bookmarking app to save and tag learning resources per roadmap skill. Laravel Breeze for auth, SQLite for zero-config local setup.",
+    stars: 0,
+    forks: 0,
+    lang: "PHP",
+    langColor: "#777bb4",
+    difficulty: "Beginner",
+    category: "Laravel",
+    // githubUrl: "https://github.com/engpath/learning-link-vault",
+    tags: ["laravel", "php", "breeze", "sqlite"],
+  },
+
+  /* ── Beginner: IoT ────────────────────────────────────────────────────── */
+  {
+    name: "iot-desk-sensor",
+    fullName: "engpath/iot-desk-sensor",
+    description:
+      "An ESP32 + MicroPython project that reads temperature and humidity from a DHT22 sensor and POSTs the data to a REST endpoint every 5 minutes. Minimal IoT starter with real hardware.",
+    stars: 0,
+    forks: 0,
+    lang: "MicroPython",
+    langColor: "#3572A5",
+    difficulty: "Beginner",
+    category: "IoT",
+    // githubUrl: "https://github.com/engpath/iot-desk-sensor",
+    tags: ["esp32", "micropython", "dht22"],
+  },
+
+  /* ── Beginner: Go ─────────────────────────────────────────────────────── */
+  {
+    name: "roadmap-schema-validator",
+    fullName: "engpath/roadmap-schema-validator",
+    description:
+      "A Go CLI that checks whether a skill-node JSON file follows the EngPath schema rules. Uses cobra and the standard library — a clean first Go project with no external dependencies.",
+    stars: 0,
+    forks: 0,
+    lang: "Go",
+    langColor: "#00add8",
+    difficulty: "Beginner",
+    category: "Golang",
+    // githubUrl: "https://github.com/engpath/roadmap-schema-validator",
+    tags: ["go", "cli", "json"],
+  },
+
+  /* ── Intermediate: Next.js ────────────────────────────────────────────── */
+  {
+    name: "engpath-community-notes",
+    fullName: "engpath/engpath-community-notes",
+    description:
+      "A platform where engineers leave short tips per roadmap skill node. Built with Next.js App Router, Prisma, and Postgres. Covers server actions and optimistic UI patterns.",
+    stars: 0,
+    forks: 0,
     lang: "TypeScript",
     langColor: "#3178c6",
     difficulty: "Intermediate",
-    category: "Integrations",
-    href: "/opensource/engpath-discord-bot",
-    tags: ["discord", "bot", "integration"],
+    category: "Next.js",
+    // githubUrl: "https://github.com/engpath/engpath-community-notes",
+    tags: ["nextjs", "prisma", "postgres"],
   },
+
+  /* ── Intermediate: IoT ────────────────────────────────────────────────── */
   {
-    name: "engpath-vscode",
-    fullName: "engpath/engpath-vscode",
+    name: "study-timer-board",
+    fullName: "engpath/study-timer-board",
     description:
-      "VS Code extension to browse EngPath roadmaps, view skill node details, and track learning progress from your editor.",
-    stars: 21,
-    forks: 3,
-    lang: "TypeScript",
-    langColor: "#3178c6",
+      "A Raspberry Pi Pomodoro timer with a physical push button and a buzzer. Completed sessions are POSTed to a REST endpoint so you can track deep work time in your profile.",
+    stars: 0,
+    forks: 0,
+    lang: "Python",
+    langColor: "#3572A5",
+    difficulty: "Intermediate",
+    category: "IoT",
+    // githubUrl: "https://github.com/engpath/study-timer-board",
+    tags: ["raspberry-pi", "gpio", "pomodoro"],
+  },
+
+  /* ── Intermediate: Go ─────────────────────────────────────────────────── */
+  {
+    name: "progress-sync-cli",
+    fullName: "engpath/progress-sync-cli",
+    description:
+      "A Go CLI that reads your local roadmap progress and syncs it as a Markdown checklist to a GitHub Gist. Covers HTTP clients, OAuth device flow, and SQLite for local state.",
+    stars: 0,
+    forks: 0,
+    lang: "Go",
+    langColor: "#00add8",
+    difficulty: "Intermediate",
+    category: "Golang",
+    // githubUrl: "https://github.com/engpath/progress-sync-cli",
+    tags: ["go", "cli", "github", "oauth"],
+  },
+
+  /* ── Advanced: Go ─────────────────────────────────────────────────────── */
+  {
+    name: "engpath-search-service",
+    fullName: "engpath/engpath-search-service",
+    description:
+      "A Go microservice that indexes all roadmap nodes and mindset articles for full-text search. Exposes a gRPC API consumed by the main platform. Includes Prometheus metrics and a Docker Compose setup.",
+    stars: 0,
+    forks: 0,
+    lang: "Go",
+    langColor: "#00add8",
     difficulty: "Advanced",
-    category: "Integrations",
-    href: "/opensource/engpath-vscode",
-    tags: ["vscode", "extension", "ide"],
+    category: "Golang",
+    // githubUrl: "https://github.com/engpath/engpath-search-service",
+    tags: ["go", "grpc", "search", "microservice"],
+  },
+
+  /* ── Advanced: Laravel ────────────────────────────────────────────────── */
+  {
+    name: "engpath-lms",
+    fullName: "engpath/engpath-lms",
+    description:
+      "A multi-tenant LMS where organizations assign EngPath roadmaps to cohorts, track group progress, and export reports. Built with Laravel + Filament Admin. Covers multi-tenancy, role permissions, and scheduled jobs.",
+    stars: 0,
+    forks: 0,
+    lang: "PHP",
+    langColor: "#777bb4",
+    difficulty: "Advanced",
+    category: "Laravel",
+    // githubUrl: "https://github.com/engpath/engpath-lms",
+    tags: ["laravel", "filament", "lms", "multi-tenant"],
   },
 ];
 

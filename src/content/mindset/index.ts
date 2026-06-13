@@ -2,8 +2,14 @@
    Mindset Articles — Content & Types
    ─────────────────────────────────────────────────────────────────────────── */
 
+import { debuggingMindsetArticle } from "./debugging-mindset";
+import { deepWorkEngineeringArticle } from "./deep-work-engineering";
+import { feedbackLoopsArticle } from "./feedback-loops";
 import { firstPrinciplesArticle } from "./first-principles";
+import { handlingAmbiguityArticle } from "./handling-ambiguity";
+import { readingDocumentationArticle } from "./reading-documentation";
 import { systemsThinkingArticle } from "./systems-thinking";
+import { tradeOffThinkingArticle } from "./trade-of-thinking";
 
 /* ── Block types ─────────────────────────────────────────────────────────── */
 
@@ -50,7 +56,16 @@ export interface MindsetArticleContent {
 
 /* ── Article registry ────────────────────────────────────────────────────── */
 
-const articles: MindsetArticleContent[] = [firstPrinciplesArticle, systemsThinkingArticle];
+const articles: MindsetArticleContent[] = [
+  firstPrinciplesArticle,
+  systemsThinkingArticle,
+  debuggingMindsetArticle,
+  handlingAmbiguityArticle,
+  tradeOffThinkingArticle,
+  deepWorkEngineeringArticle,
+  readingDocumentationArticle,
+  feedbackLoopsArticle,
+];
 
 /* ── Helpers ─────────────────────────────────────────────────────────────── */
 
