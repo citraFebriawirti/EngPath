@@ -8,6 +8,7 @@ import ThemeToggle from "./theme-toggle";
 import { usePathname } from "next/navigation";
 import { Route } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { GITHUB_REPO_URL } from "@/lib/constants";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -72,7 +73,7 @@ export default function Header() {
             </Link>
 
             <a
-              href="https://github.com/engpath"
+              href={GITHUB_REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden h-9 items-center gap-1.5 rounded-full bg-[#7A5AF8] px-4 text-sm font-medium text-white shadow-sm transition hover:bg-[#6941C6] lg:inline-flex"

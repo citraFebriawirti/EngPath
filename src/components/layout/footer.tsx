@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { Route } from "lucide-react";
+import {
+  GITHUB_REPO_URL,
+  GITHUB_LICENSE_URL,
+  GITHUB_RELEASES_URL,
+} from "@/lib/constants";
 
 const footerLinks = {
   Paths: [
@@ -17,10 +22,10 @@ const footerLinks = {
     { label: "About", href: "/about" },
   ],
   Project: [
-    { label: "GitHub", href: "https://github.com/engpath" },
-    { label: "Contributing", href: "https://github.com/engpath/engpath/blob/main/CONTRIBUTING.md" },
-    { label: "License (MIT)", href: "https://github.com/engpath/engpath/blob/main/LICENSE" },
-    { label: "Changelog", href: "https://github.com/engpath/engpath/releases" },
+    { label: "GitHub", href: GITHUB_REPO_URL },
+    { label: "Contributing", href: "/contribute" },
+    { label: "License (MIT)", href: GITHUB_LICENSE_URL },
+    { label: "Changelog", href: GITHUB_RELEASES_URL },
   ],
 };
 
@@ -47,7 +52,7 @@ export default function Footer() {
               Open source and free forever.
             </p>
             <a
-              href="https://github.com/engpath"
+              href={GITHUB_REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-fit items-center gap-1.5 rounded-lg border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] px-2.5 py-1.5 font-mono text-[11px] font-medium text-gray-600 dark:text-gray-400 transition hover:border-gray-300 dark:hover:border-white/[0.14] hover:text-gray-900 dark:hover:text-white"

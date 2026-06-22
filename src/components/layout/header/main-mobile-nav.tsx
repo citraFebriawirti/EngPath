@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { navItems } from './nav-items';
 import { cn } from '@/lib/utils';
 import { ChevronDownIcon } from '@/icons/icons';
+import { GITHUB_REPO_URL } from '@/lib/constants';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -84,7 +85,7 @@ export default function MainMobileNav({ isOpen }: MobileMenuProps) {
 
         <div className="mt-4 flex flex-col gap-2.5 border-t border-white/[0.07] pt-4">
           <a
-            href="https://github.com/engpath"
+            href={GITHUB_REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-11 w-full items-center justify-center gap-2 rounded-full border border-white/[0.10] text-sm font-medium text-gray-300 transition hover:bg-white/[0.05] hover:text-white"

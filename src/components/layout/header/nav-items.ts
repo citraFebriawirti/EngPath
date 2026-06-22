@@ -21,6 +21,11 @@ export const navItems: NavItem[] = [
   },
   {
     type: "link",
+    href: "/contribute",
+    label: "Contribute",
+  },
+  {
+    type: "link",
     href: "/about",
     label: "About",
   },

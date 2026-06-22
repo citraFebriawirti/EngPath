@@ -250,7 +250,7 @@ src/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/engpath.git
+git clone https://github.com/citraFebriawirti/EngPath
 ```
 
 ### Install Dependencies

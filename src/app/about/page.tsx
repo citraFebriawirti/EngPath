@@ -47,7 +47,7 @@ export default function AboutPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="https://github.com/engpath"
+                  href="https://github.com/citraFebriawirti/EngPath"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-white/[0.10] bg-white dark:bg-white/[0.04] px-6 py-3 text-sm font-medium text-gray-900 dark:text-gray-200 shadow-theme-xs transition hover:-translate-y-px hover:border-gray-300 dark:hover:border-white/[0.18]"

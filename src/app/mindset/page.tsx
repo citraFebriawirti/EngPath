@@ -163,7 +163,7 @@ export default function MindsetPage() {
                   </p>
                 </div>
                 <a
-                  href="https://github.com/engpath/engpath-mindset"
+                  href="https://github.com/citraFebriawirti/EngPath"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex shrink-0 items-center gap-2 rounded-full border border-gray-200 dark:border-white/[0.10] bg-white dark:bg-white/[0.04] px-5 py-[9px] text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm transition hover:-translate-y-px hover:border-gray-300 dark:hover:border-white/[0.18]"

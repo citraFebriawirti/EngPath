@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, GitBranch } from "lucide-react";
+import { GITHUB_CONTRIBUTING_URL } from "@/lib/constants";
 export { metadata } from "./data";
 import { projects, whyContribute } from "./data";
 import Header from "@/components/layout/header/header";
@@ -63,7 +64,7 @@ export default function OpenSourcePage() {
 
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://github.com/engpath"
+                  href="https://github.com/citraFebriawirti/EngPath"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-[#7A5AF8] px-6 py-3 text-sm font-medium text-white shadow-theme-xs transition hover:-translate-y-px hover:brightness-105"
@@ -72,7 +73,7 @@ export default function OpenSourcePage() {
                   View on GitHub
                 </a>
                 <a
-                  href="https://github.com/engpath/engpath/blob/main/CONTRIBUTING.md"
+                  href="https://github.com/citraFebriawirti/EngPath/blob/main/CONTRIBUTING.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-gray-400 dark:border-gray-700 bg-white dark:bg-[#171F2E] px-6 py-3 text-sm font-medium text-gray-900 dark:text-gray-50 shadow-theme-xs transition hover:-translate-y-px"
@@ -210,7 +211,7 @@ export default function OpenSourcePage() {
             </p>
             <div className="mt-2 flex flex-wrap justify-center gap-3">
               <a
-                href="https://github.com/engpath/engpath/blob/main/CONTRIBUTING.md"
+                href={GITHUB_CONTRIBUTING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#7A5AF8] px-6 py-3 text-sm font-medium text-white shadow-theme-xs transition hover:-translate-y-px hover:brightness-105 hover:shadow-theme-sm"

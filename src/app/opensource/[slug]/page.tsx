@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Code2, ExternalLink } from "lucide-react";
+import { GITHUB_REPO_URL } from "@/lib/constants";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer";
 
@@ -40,7 +41,7 @@ export default async function OpenSourceSlugPage({
                   to explore this project.
                 </p>
                 <a
-                  href={`https://github.com/engpath/${slug}`}
+                  href={`${GITHUB_REPO_URL}/${slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-500 px-5 py-2.5 text-sm font-medium text-white transition hover:-translate-y-px hover:brightness-105"
