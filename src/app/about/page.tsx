@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Route, GitBranch, BookOpen } from "lucide-react";
 export { metadata } from "./data";
-import { values, stats, layers } from "./data";
+import { values, facts, layers } from "./data";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
@@ -67,30 +67,33 @@ export default function AboutPage() {
             <FadeUp className="flex flex-col gap-5">
               <p className="eyebrow">Our Story</p>
               <h2 className="text-[clamp(26px,3.4vw,40px)] font-bold leading-[1.08] tracking-[-0.02em] text-gray-900 dark:text-white">
-                Built because the gap is real
+                Started from a casual idea
               </h2>
               <div className="flex flex-col gap-4 text-[15px] leading-[1.75] text-gray-600 dark:text-gray-400">
                 <p>
-                  Most learning resources teach <em>what</em> to code. They
-                  list technologies, frameworks, and tools in a long checklist.
-                  But the engineers who thrive don&apos;t just know more —
-                  they{" "}
+                  EngPath wasn&apos;t planned as a product. It started from a
+                  conversation — friends and a small TikTok community asking the
+                  same question:{" "}
+                  <em>
+                    &ldquo;where do I actually start to become a real
+                    engineer?&rdquo;
+                  </em>
+                </p>
+                <p>
+                  Most resources give you a list of technologies to learn. But
+                  they don&apos;t show you how to{" "}
                   <strong className="font-medium text-gray-900 dark:text-white">
-                    think differently
-                  </strong>
-                  .
+                    think
+                  </strong>{" "}
+                  like an engineer — how to break down problems, handle
+                  ambiguity, or understand why one approach beats another. So we
+                  built something that tries to teach both.
                 </p>
                 <p>
-                  EngPath started as a personal experiment: what if a learning
-                  platform was built around <em>mental models</em> instead of
-                  technology checklists? Structured skill paths that show
-                  connections, not just lists. Mindset articles that teach how
-                  senior engineers approach problems.
-                </p>
-                <p>
-                  It grew into a community project under the MIT license. No
-                  company, no investors, no hidden agenda — just engineers who
-                  want a better map for the road ahead.
+                  The app is still simple and evolving. No company behind it, no
+                  investors — just people who genuinely want a better map for
+                  the road ahead. MIT licensed, free forever, and open to
+                  anyone who wants to help build it.
                 </p>
               </div>
             </FadeUp>
@@ -111,16 +114,16 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                {stats.map((s) => (
+                {facts.map((f) => (
                   <div
-                    key={s.label}
+                    key={f.label}
                     className="rounded-xl border border-gray-200 dark:border-white/[0.07] bg-white dark:bg-[#0F172A] p-4"
                   >
-                    <p className="text-[28px] font-bold tracking-[-0.02em] text-gray-900 dark:text-white">
-                      {s.value}
+                    <p className="text-[28px] font-bold tracking-[-0.02em] text-[#7A5AF8]">
+                      {f.value}
                     </p>
                     <p className="mt-[2px] font-mono text-[11.5px] text-gray-500 dark:text-gray-500">
-                      {s.label}
+                      {f.label}
                     </p>
                   </div>
                 ))}

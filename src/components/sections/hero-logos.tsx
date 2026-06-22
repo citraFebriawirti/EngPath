@@ -3,10 +3,10 @@
 import { StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
 const stats = [
-  { value: "500+", label: "Active Learners", color: "#7A5AF8" },
   { value: "9", label: "Career Paths", color: "#7A5AF8" },
-  { value: "200+", label: "Skill Nodes", color: "#7A5AF8" },
-  { value: "100%", label: "Free & Open Source", color: "#7A5AF8" },
+  { value: "8", label: "Mindset Articles", color: "#7A5AF8" },
+  { value: "MIT", label: "License", color: "#7A5AF8" },
+  { value: "Free", label: "No Login Required", color: "#7A5AF8" },
 ];
 
 export default function StatsSection() {

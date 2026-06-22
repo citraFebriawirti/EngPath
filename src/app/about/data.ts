@@ -34,11 +34,11 @@ export const values = [
   },
 ];
 
-export const stats = [
-  { value: "500+", label: "Active Learners" },
-  { value: "9", label: "Career Paths" },
-  { value: "200+", label: "Skill Nodes" },
-  { value: "100%", label: "Free & Open" },
+export const facts = [
+  { label: "Career paths", value: "9" },
+  { label: "Mindset articles", value: "8" },
+  { label: "License", value: "MIT" },
+  { label: "Account required", value: "None" },
 ];
 
 export const layers = [
