@@ -1,334 +1,222 @@
-# EngPath — Open Source Engineering Learning Pathway
+# EngPath
 
-Build your engineering career through structured roadmaps, interactive architecture diagrams, and real-world project templates.
+**Structured career roadmaps and engineer mindset training. Free forever, open source, no account required.**
 
-> Learn the path. Understand the system. Build the project.
-
-## 🚀 Overview
-
-EngPath is an open-source platform designed to help developers navigate engineering careers through visual learning experiences.
-
-Instead of presenting endless articles and disconnected tutorials, EngPath organizes knowledge into interactive pathways that show:
-
-- What to learn
-- Why it matters
-- How technologies connect
-- Where to practice with real projects
-
-Everything is community-driven, GitHub-powered, and accessible without registration.
+[Live Site](https://egpath.netlify.app) · [Contributing Guide](/contribute) · [MIT License](LICENSE)
 
 ---
 
-## ✨ Key Features
+## What is EngPath?
 
-### 🌍 Interactive World Map
+EngPath is an open-source platform that helps developers grow both their **technical skills** and **engineering thinking**. Most learning platforms hand you a list of technologies to memorize. EngPath builds the mental models underneath — the way senior engineers actually approach problems.
 
-The heart of EngPath.
+The platform has three content areas:
 
-Explore engineering domains through an interactive world map built with React Flow.
+| Area | What it does |
+|---|---|
+| Career Roadmaps | 9 structured skill paths from Foundation to Expert level |
+| Engineer Mindset | Articles on how to think, not just what to build |
+| Open Source | Real repositories you can contribute to |
 
-Each domain becomes its own island:
-
-- Backend Engineering
-- Frontend Engineering
-- DevOps
-- Mobile Development
-- Cyber Security
-- Data Engineering
-- Database Administration
-- Quality Assurance
-- Business Analysis
-
-Users can visually discover learning paths instead of navigating traditional menus.
+Everything is free, no login required, and content lives in TypeScript data files that anyone can edit via a pull request.
 
 ---
 
-### 🛣️ Learning Roadmaps
+## Pages
 
-Every domain contains a structured roadmap with:
+### `/roadmap` — Career Roadmaps
 
-- Beginner → Advanced progression
-- Learning phases
-- Dependency relationships
-- Progress states
+Nine structured career paths, each broken into skill nodes with difficulty levels, descriptions, and learning resources:
 
-Node statuses:
+- **Core paths**: Backend, Frontend, DevOps
+- **Specializations**: Mobile, Security, Data Engineering, QA, Database Administration
+- **Domain track**: Business & Tech
 
-- ✅ Completed
-- 📖 Learning
-- 🔒 Locked
+Each domain has 18–42 skill nodes organized across 4 levels: Foundation → Intermediate → Advanced → Expert.
 
----
+### `/mindset` — Engineer Mindset
 
-### 📚 Node Detail Pages
+A library of engineering thinking articles. Each article is written in a structured block format (no MDX, no markdown files) — just typed TypeScript objects that render into rich content pages.
 
-Every learning topic includes:
+Available block types: paragraphs, headings, callouts (insight/tip/warning), lists, quotes, code blocks, dialogue conversations, key takeaways, and references.
 
-- Reading time estimation
-- Difficulty level
-- Technology tags
-- MDX-based content
-- Related GitHub repositories
-- Recommended templates
+Current articles include: First-Principles Thinking, Systems Thinking, Debugging Mindset, Handling Ambiguity, Trade-Off Thinking, Deep Work for Engineers, Reading Documentation, and Feedback Loops.
 
-No additional navigation required.
+### `/opensource` — Open Source Projects
+
+A curated list of real repositories organized by difficulty (Beginner / Intermediate / Advanced). Each project card shows language, category, and tags.
+
+### `/contribute` — Contributing Guide
+
+A step-by-step guide to contributing in each area. No React knowledge required — every content contribution is a TypeScript data file edit.
 
 ---
 
-### 🏗️ Architecture Visualization
+## Tech Stack
 
-Interactive architecture diagrams built using React Flow.
-
-Users can:
-
-- Explore system designs
-- Click components for explanations
-- Understand technology relationships
-- Learn real-world engineering patterns
-
-No backend required.
-
----
-
-### 📦 Template Repository
-
-A curated collection of open-source project templates.
-
-Features:
-
-- Language filtering
-- Difficulty filtering
-- GitHub integration
-- Repository links
-- Live GitHub star count
-
-Examples:
-
-- Go API Boilerplates
-- Next.js Starter Kits
-- DevOps Infrastructure Templates
-- Microservice Examples
+| Technology | Purpose |
+|---|---|
+| Next.js 15 (App Router) | Framework, SSR, file-based routing |
+| React 19 | UI |
+| TypeScript | Language, typed content system |
+| Tailwind CSS v4 | Styling with CSS variable design tokens |
+| next-themes | Dark / light mode via `data-theme` attribute |
+| Lucide React | Icons |
+| React Flow | Roadmap visualization graph |
+| Geist | Font family (Sans + Mono) |
 
 ---
 
-## 🖥️ Platform Structure
+## Project Structure
 
-### 1. Landing Page
-
-Minimal and focused.
-
-Contains:
-
-- Clear positioning statement
-- Open Source badge
-- Roadmap CTA
-- GitHub CTA
-- Statistics bar
-
-Statistics include:
-
-- Total Roadmap Nodes
-- Templates
-- Architecture Diagrams
-
----
-
-### 2. World Map
-
-Interactive domain exploration experience.
-
-Users select a domain by navigating visual islands rather than traditional lists.
-
----
-
-### 3. Roadmap Detail
-
-Three perspectives in a single view:
-
-- Learning Path
-- Architecture Diagram
-- Related Templates
-
----
-
-### 4. Node Detail
-
-Detailed learning content powered by MDX.
-
----
-
-### 5. Architecture Visualization
-
-Interactive system architecture explorer.
-
----
-
-### 6. Template Repository
-
-Open-source project discovery hub.
-
----
-
-## 🎨 Design Principles
-
-### No Login Required
-
-Full access without friction.
-
-Users can immediately start learning.
-
----
-
-### Open Source First
-
-All content lives inside GitHub.
-
-Contributions happen through Pull Requests.
-
----
-
-### MDX-Powered Content
-
-Roadmaps and learning materials are stored as MDX files, making contributions simple and scalable.
-
----
-
-### Consistent Language Identity
-
-Each language has a dedicated visual identity:
-
-| Language   | Color  |
-| ---------- | ------ |
-| Python     | Blue   |
-| Go         | Green  |
-| TypeScript | Purple |
-
-The same color system is used across roadmaps, diagrams, and templates.
-
----
-
-### Mobile Friendly
-
-Designed from the beginning for mobile users who learn during commutes, breaks, or while away from their workstation.
-
----
-
-## 🛠️ Tech Stack
-
-- Next.js 15
-- React 19
-- TypeScript
-- React Flow
-- Tailwind CSS
-- MDX
-- GitHub API
-- Static Export
-
----
-
-## 📂 Project Structure
-
-```bash
+```
 src/
-├── app/
-├── components/
-├── content/
+├── app/                         # Next.js App Router pages
+│   ├── page.tsx                 # Homepage
+│   ├── roadmap/                 # Roadmap listing + [domain] detail pages
+│   ├── mindset/                 # Article listing + [slug] detail pages
+│   ├── opensource/              # Open source listing + [slug] pages
+│   ├── contribute/              # Contributing guide page
+│   └── about/                   # About page
+│
+├── content/                     # All content data (TypeScript)
 │   ├── roadmap/
-│   ├── architecture/
-│   └── templates/
-├── config/
-├── hooks/
-├── lib/
-├── types/
-└── public/
+│   │   ├── types.ts             # RoadmapDomain, SkillNode, Level types
+│   │   ├── index.ts             # Domain registry + helper functions
+│   │   └── backend/index.ts     # One file per domain (backend, frontend, ...)
+│   ├── mindset/
+│   │   ├── index.ts             # MindsetArticleContent type + article registry
+│   │   └── systems-thinking/    # One folder per article
+│   └── opensource/
+│       └── index.ts             # OsProject type + projects list
+│
+├── components/
+│   ├── layout/                  # Header, Footer, nav
+│   ├── mindset/                 # ArticleCard, block renderers
+│   ├── opensource/              # ProjectCard
+│   ├── roadmap/                 # Roadmap flow graph components
+│   ├── sections/                # Reusable page sections
+│   └── ui/
+│       └── motion.tsx           # FadeUp, StaggerContainer, StaggerItem
+│
+└── lib/
+    ├── constants.ts             # GITHUB_REPO_URL and other shared URLs
+    └── utils.ts                 # cn() and utilities
 ```
 
 ---
 
-## 🚀 Getting Started
-
-### Clone Repository
+## Getting Started
 
 ```bash
-git clone https://github.com/citraFebriawirti/EngPath
-```
+# Clone the repository
+git clone https://github.com/citraFebriawirti/EngPath.git
+cd EngPath
 
-### Install Dependencies
-
-```bash
+# Install dependencies
 npm install
-```
 
-### Start Development Server
-
-```bash
+# Start the development server
 npm run dev
 ```
 
-Open:
+Open [http://localhost:3000](http://localhost:3000).
 
-```text
-http://localhost:3000
+```bash
+# Type-check and build
+npm run build
 ```
 
 ---
 
-## 🤝 Contributing
+## Content System
 
-We welcome contributions from the community.
+Content is written as TypeScript objects, not markdown. This gives full type safety — every field is validated at build time.
 
-You can contribute by:
-
-- Adding roadmap nodes
-- Improving learning content
-- Creating architecture diagrams
-- Sharing open-source templates
-- Fixing bugs
-- Improving UI/UX
-
-Please read:
-
-```text
-docs/CONTRIBUTING.md
+**Roadmap domain** — `src/content/roadmap/[domain]/index.ts`
+```ts
+export const backend: RoadmapDomain = {
+  slug: "backend",
+  label: "Backend",
+  flag: "Core",
+  nodes: [
+    {
+      id: "be-http",
+      title: "HTTP & REST",
+      type: "core",
+      level: 1,
+      description: "...",
+      resources: [{ label: "MDN HTTP", href: "https://..." }],
+    },
+  ],
+};
 ```
 
-before creating a Pull Request.
+**Mindset article** — `src/content/mindset/[slug]/index.ts`
+```ts
+export const systemsThinkingArticle: MindsetArticleContent = {
+  slug: "systems-thinking",
+  title: "Systems Thinking: See the Whole, Not the Parts",
+  lead: "Opening paragraph...",
+  blocks: [
+    { kind: "h2", text: "Section heading" },
+    { kind: "p",  text: "Paragraph text." },
+    { kind: "callout", variant: "insight", title: "Key idea", body: "..." },
+    { kind: "takeaways", items: ["Point 1", "Point 2"] },
+  ],
+};
+```
+
+**Open source project** — `src/app/opensource/data.ts`
+```ts
+{ name: "engpath-api", difficulty: "Intermediate", lang: "TypeScript", ... }
+```
 
 ---
 
-## 🎯 Vision
+## Contributing
 
-Most learning platforms tell developers what technologies exist.
+See the full contributing guide at [egpath.netlify.app/contribute](https://egpath.netlify.app/contribute) or read [CONTRIBUTING.md](CONTRIBUTING.md).
 
-EngPath focuses on something more important:
+There are three ways to contribute — none require React knowledge:
 
-**Showing the path between where you are and where you want to be.**
+1. **Add a roadmap domain** — create `src/content/roadmap/[domain]/index.ts`, register in the index
+2. **Write a mindset article** — create `src/content/mindset/[slug]/index.ts`, register in two files
+3. **List an open source project** — add one object to `src/app/opensource/data.ts`
 
-By combining:
-
-- Roadmaps
-- Architecture Thinking
-- Real Project Templates
-
-EngPath helps developers understand not only what to learn, but how modern engineering systems are built.
+Every PR should pass `npm run build` with zero TypeScript errors before review.
 
 ---
 
-## 📜 License
+## Design Tokens
 
-Licensed under the MIT License.
+The design system uses CSS variables for theming:
 
-Feel free to use, modify, and distribute this project.
+```css
+/* Light mode */
+--ep-bg:      #FFFFFF;
+--ep-surface: #F8FAFC;
+--ep-text:    #0F172A;
+--color-primary-500: #7A5AF8;
+
+/* Dark mode (data-theme="dark") */
+--ep-bg:      #0F172A;
+--ep-surface: #101828;
+```
+
+Tailwind v4 is configured with `@theme inline` to expose these as utility classes.
 
 ---
 
-## ⭐ Support
+## License
 
-If you find EngPath useful:
+MIT — free to use, modify, and distribute. See [LICENSE](LICENSE).
 
-- Star the repository
-- Share it with other developers
-- Contribute new content
-- Open issues and discussions
+---
 
-Together we can build the open-source learning platform we wish existed when we started.
+## Links
+
+- Live site: [https://egpath.netlify.app](https://egpath.netlify.app)
+- Repository: [https://github.com/citraFebriawirti/EngPath](https://github.com/citraFebriawirti/EngPath)
+- Contributing guide: [https://egpath.netlify.app/contribute](https://egpath.netlify.app/contribute)
+- Issues: [https://github.com/citraFebriawirti/EngPath/issues](https://github.com/citraFebriawirti/EngPath/issues)
