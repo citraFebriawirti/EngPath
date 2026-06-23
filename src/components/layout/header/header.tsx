@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { Route } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { GITHUB_REPO_URL } from "@/lib/constants";
+import GoogleTranslate from "./google-translate";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,12 +30,8 @@ export default function Header() {
                 <Route className="h-4.5 w-4.5" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-[17px] font-bold tracking-tight text-gray-900 dark:text-white">
-                  EngPath
-                </span>
-                <span className="hidden text-[10.5px] font-medium text-gray-400 dark:text-gray-500 sm:block">
-                  Engineer Career Roadmap
-                </span>
+                <span className="text-[17px] font-bold tracking-tight text-gray-900 dark:text-white">EngPath</span>
+                <span className="hidden text-[10.5px] font-medium text-gray-400 dark:text-gray-500 sm:block">Engineer Career Roadmap</span>
               </div>
             </Link>
           </div>
@@ -60,18 +57,16 @@ export default function Header() {
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            <Link
+            {/* <Link
               href="/roadmap"
               className={cn(
                 "hidden text-sm font-medium transition lg:block",
-                pathname === "/roadmap" || pathname.startsWith("/roadmap/")
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                pathname === "/roadmap" || pathname.startsWith("/roadmap/") ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               )}
             >
               Roadmaps
-            </Link>
-
+            </Link> */}
+            <GoogleTranslate />
             <a
               href={GITHUB_REPO_URL}
               target="_blank"
